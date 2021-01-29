@@ -20,7 +20,7 @@ enum INPUT
    LEFT = 'q',
    RIGHT = 'd',
    TOP = 'z',
-   BOTTOM = 's',
+   DOWN = 's',
    STOP = 'x'
   };
 
@@ -29,7 +29,7 @@ enum INPUT
 
 bool is_direction (char c) {
   return ((c == LEFT) or (c == RIGHT)
-	  or (c == BOTTOM) or (c == TOP));
+	  or (c == DOWN) or (c == TOP));
 }
 
 
@@ -106,15 +106,38 @@ void Interface::drawStats(Character* player)
 }
  
 
-void Interface::refresh(Character* player) {
-    this->drawStats(player);
+void Interface::clear(Map* map, std::array coords) 
+{
+    char* fullMap = map->layerMap;
+    char cToPlace = fullMap[coords[1] * (map->lineSize) + coords[0]]
 
+    move(x,y);
+    addch(cToPlace);
 }
+
+
 
 void Interface::drawPlayer(Character* player)
 {
-    array<int, 2> coords = player->getCoordinates();
+    std::array<int, 2> coords = player->getCoordinates();
 
-    move(coords[0], coords[1]);
+    move(coords[1], coords[0]);
     addch('@');
+}
+
+
+
+void Interface::refresh(Map* map, Character* player, array<int, 2> newCoords) {
+
+    this->drawStats(player);
+
+    std::array<int, 2> coords = player->getCoorinates();
+    this->clear(map, coords);
+
+    player->updatePosition(newCoords[0], newCoords[1]);
+
+    this->drawPlayer(player);
+
+    refresh();
+
 }

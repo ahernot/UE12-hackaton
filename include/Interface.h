@@ -19,5 +19,6 @@ class Interface {
         void drawMap(Map* map);
         void drawStats(Character* player);
         void drawPlayer(Character* player);
-        void refresh();
+        void clear(Map* map, std::array<int, 2> coords)
+        void refresh(Map* map, Character* player);
 };
