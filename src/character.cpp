@@ -90,7 +90,7 @@ void Character::clearArmor () {
 /**
  * Remove broken armor (durability = 0) on character
  */
-void Character::clearBrokenArmor () {
+void Character::_clearBrokenArmor () {
     for (int i = 0; i < 4; i ++) {
         ArmorItem* armorItem = (this->_armor)[i];
         if (armorItem->getDurability() <= 0) {
@@ -144,7 +144,7 @@ void Character::clearWeapon () {
 /**
  * Remove broken weapon (durability = 0) on character
  */
-void Character::clearBrokenWeapon () {
+void Character::_clearBrokenWeapon () {
     if ((this->_weapon)->getDurability() <= 0) {
         this->_weapon = nullptr; // delete pointer (DELETE OBJECT???)
     };
@@ -240,28 +240,26 @@ Item* Character::replaceInventory (Item* newItem, const int& pos) {
     return oldItem;
 };
 
-
+/**
+ * 
+ */
 void Character::removeInInventory (const int& pos) {
     (this->_inventory)[pos] = nullptr;
-}; // delete if broken, with isBroken method from Item
-
+};
 
 /**
  * Clear all player inventory
  */
-
 void Character::clearInventory () {
     for (int i = 0; i < INVENTORY_SIZE; i ++) {
         (this->_inventory)[i] = nullptr;
     };
 }
 
-
 /**
  * Clear all broken in player inventory
  */
-
-void Character::clearBrokenInInventory () {
+void Character::_clearBrokenInInventory () {
     for (int i = 0; i < INVENTORY_SIZE; i ++) {
         Item* inventoryItem = (this->_inventory)[i]; // works?
         if (inventoryItem->getDurability() <= 0) {
@@ -275,45 +273,61 @@ void Character::clearBrokenInInventory () {
 
 
 
+//------Main methods------//
 
-
-
-
-
+/**
+ * Clear broken items from whole inventory (including armor and weapon slots)
+ */
 void Character::clearBroken () {
-    this->clearBrokenArmor ();
-    this->clearBrokenWeapon ();
-    // Clean broken items in inventory // TODO
+    this->_clearBrokenArmor();
+    this->_clearBrokenWeapon();
+    this->_clearBrokenInInventory();
 };
 
-
-
+/**
+ * Clear all items from whole inventory (including armor and weapon slots)
+ */
 void Character::clearAllInventories () {
         this->clearArmor();
         this->clearWeapon();
         this->clearInventory();
     };
 
-
-
+/**
+ * Update character position
+ * @param x x-axis position
+ * @param y y-axis position
+ */
 void Character::updatePosition (const int& x, const int& y) {
     this->_xPos = x;
     this->_yPos = y;
 }
 
-
+/**
+ * Update character alive status
+ */
 void Character::updateStatus () {
     if (this->_health <= 0) {
         this->_alive = false;
     };
 };
 
+/**
+ * Check character alive status
+ * @return alive boolean
+ */
 bool Character::isAlive () {
     return this->_alive;
 };
 
 
 
-// DESTRUCTOR WHEN DEAD
-// SHIELD TO ACTIVATE, IN OFFHAND?
-// Regeneration?
+
+
+
+/**
+* TO DO
+* class destructor to call when dead
+* shield slot (offhand) with activation hotkey for damage reduction
+* natural health regeneration?
+*/

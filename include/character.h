@@ -26,14 +26,12 @@ class Character {
         ArmorItem* replaceArmor (ArmorItem* newArmor);
         ArmorItem* getArmorItem (const int& pos);
         void clearArmor ();
-        void clearBrokenArmor ();
 
         // Weapon management
         int getWeaponVal ();
         WeaponItem* replaceWeapon (WeaponItem* newWeapon);
         WeaponItem* getWeaponItem ();
         void clearWeapon ();
-        void clearBrokenWeapon ();
 
         // Health management
         int getHealth ();
@@ -48,7 +46,6 @@ class Character {
         Item* replaceInventory (Item* newItem, const int& pos);
         void removeInInventory (const int& pos);
         void clearInventory ();
-        void clearBrokenInInventory();
 
         // Clear all items
         void clearAllInventories ();
@@ -85,6 +82,11 @@ class Character {
         std::array<ArmorItem*, 4> _armor; // Armor pieces
         WeaponItem* _weapon; // Weapon
         std::array<Item*, INVENTORY_SIZE> _inventory; // Inventory
+
+        // Clear broken items
+        void _clearBrokenArmor ();
+        void _clearBrokenWeapon ();
+        void _clearBrokenInInventory();
 
 };
 
