@@ -1,16 +1,23 @@
 #include "Character.h"
 
-Character::Character (const int& type, const int& x, const int& y, const int& health, const int& inventorySlots): _type(type), _xPos(x), _yPos(y), _health(health), _inventorySlots(inventorySlots) {  
+template<int inventorySlots>
+Character<inventorySlots>::Character (const int& type, const int& x, const int& y, const int& health, const int& inventorySlots): _type(type), _xPos(x), _yPos(y), _health(health), _inventorySlots(inventorySlots) {  
+};
+
+Character<inventorySlots>::~Character () {
+    // destroy
 };
 
 
 
-std::array<int, 2> Character::getCoordinates () {
+template<int inventorySlots>
+std::array<int, 2> Character<inventorySlots>::getCoordinates () {
     std::array<int, 2> coordinates = {this->_xPos, this->_yPos};
     return coordinates;
 };
 
-int Character::getType () {
+template<int inventorySlots>
+int Character<inventorySlots>::getType () {
     return this->_type;
 };
 
@@ -18,7 +25,8 @@ int Character::getType () {
 
 
 // Armor
-int Character::getArmorVal () {
+template<int inventorySlots>
+int Character<inventorySlots>::getArmorVal () {
     int armorVal = 0;
     for (std::array<ArmorItem*, 4>::iterator armorIterator = this->_armor.begin(); armorIterator < this->_armor.end(); armorIterator ++) {
         armorVal += (*armorIterator)->getDefensePoints();
@@ -31,7 +39,8 @@ int Character::getArmorVal () {
  * @param newArmor new armor piece to add
  * @return old armor piece
  */
-ArmorItem* Character::replaceArmor (ArmorItem* newArmor) {
+template<int inventorySlots>
+ArmorItem* Character<inventorySlots>::replaceArmor (ArmorItem* newArmor) {
     int newArmorType = newArmor->getType(); // get new armor type
     ArmorItem* oldArmor = (this->_armor)[newArmorType]; // Get old armor (with matching type) pointer
     (this->_armor)[newArmorType] = newArmor; // Replace old armor with new armor
@@ -43,17 +52,20 @@ ArmorItem* Character::replaceArmor (ArmorItem* newArmor) {
  * @param pos position
  * @return pointer to armor item
  */
-ArmorItem* Character::getArmorItem (const int& pos) {
+template<int inventorySlots>
+ArmorItem* Character<inventorySlots>::getArmorItem (const int& pos) {
     return (this->_armor)[pos];
 };
 
-void Character::clearArmor () {
+template<int inventorySlots>
+void Character<inventorySlots>::clearArmor () {
     for (int i = 0; i < 4; i ++) {
         (this->_armor)[i] = nullptr;
     };
 };
 
-void Character::clearBrokenArmor () {
+template<int inventorySlots>
+void Character<inventorySlots>::clearBrokenArmor () {
     for (int i = 0; i < 4; i ++) {
         ArmorItem* armorItem = (this->_armor)[i];
         if (armorItem->getDurability() <= 0) {
@@ -70,7 +82,8 @@ void Character::clearBrokenArmor () {
  * Get character attack points.
  * @return Weapon value
  */
-int Character::getWeaponVal () {
+template<int inventorySlots>
+int Character<inventorySlots>::getWeaponVal () {
     return (this->_weapon)->getAttackPoints();
 }
 
@@ -79,7 +92,8 @@ int Character::getWeaponVal () {
  * @param newWeapon new weapon
  * @return old weapon
  */
-WeaponItem* Character::replaceWeapon (WeaponItem* newWeapon) {
+template<int inventorySlots>
+WeaponItem* Character<inventorySlots>::replaceWeapon (WeaponItem* newWeapon) {
     WeaponItem* oldWeapon = (this->_weapon);
     this->_weapon = newWeapon;
     return oldWeapon;
@@ -89,15 +103,18 @@ WeaponItem* Character::replaceWeapon (WeaponItem* newWeapon) {
  * Get weapon item
  * @return pointer to weapon item
  */
-WeaponItem* Character::getWeaponItem () {
+template<int inventorySlots>
+WeaponItem* Character<inventorySlots>::getWeaponItem () {
     return this->_weapon;
 };
 
-void Character::clearWeapon () {
+template<int inventorySlots>
+void Character<inventorySlots>::clearWeapon () {
     this->_weapon = nullptr;
 };
 
-void Character::clearBrokenWeapon () {
+template<int inventorySlots>
+void Character<inventorySlots>::clearBrokenWeapon () {
     if ((this->_weapon)->getDurability() <= 0) {
         this->_weapon = nullptr; // delete pointer (DELETE OBJECT???)
     };
@@ -109,19 +126,23 @@ void Character::clearBrokenWeapon () {
 
 
 // Health management
-int Character::getHealth () {
+template<int inventorySlots>
+int Character<inventorySlots>::getHealth () {
     return this->_health;
 };
 
-int Character::addHealth (const int& healthToAdd) {
+template<int inventorySlots>
+int Character<inventorySlots>::addHealth (const int& healthToAdd) {
     this->_health += healthToAdd;
 };
 
-int Character::removeHealth (const int& healthToRemove) {
+template<int inventorySlots>
+int Character<inventorySlots>::removeHealth (const int& healthToRemove) {
     this->_health -= healthToRemove;
 };
 
- void Character::clearHealth () {
+template<int inventorySlots>
+void Character<inventorySlots>::clearHealth () {
      this->_health = 0;
  };
 
@@ -131,57 +152,61 @@ int Character::removeHealth (const int& healthToRemove) {
 
 
 // Inventory management
-std::vector<Item*> Character::getInventory () {
+template<int inventorySlots>
+std::array<Item*, inventorySlots> Character<inventorySlots>::getInventory () {
     return this->_inventory;
 };
 
-Item* Character::getInventory (const int& pos) {
+template<int inventorySlots>
+Item* Character<inventorySlots>::getInventory (const int& pos) {
     return (this->_inventory)[pos];
 };
 
 /**
  * Default method to add to end of inventory (englobe tous les types d'Item ?)
  */
-Item* Character::replaceInventory (Item* newItem) {
+template<int inventorySlots>
+Item* Character<inventorySlots>::replaceInventory (Item* newItem) {
     return Character::replaceInventory(newItem, 8); // Replace last item of inventory
 };
 
-Item* Character::replaceInventory (Item* newItem, const int& pos) {
+template<int inventorySlots>
+Item* Character<inventorySlots>::replaceInventory (Item* newItem, const int& pos) {
     Item* oldItem = (this->_inventory)[pos];
     (this->_inventory)[pos] = newItem;
     return oldItem;
 };
 
-void Character::removeInInventory (const int& pos) {
+template<int inventorySlots>
+void Character<inventorySlots>::removeInInventory (const int& pos) {
     (this->_inventory)[pos] = nullptr;
 }; // delete if broken, with isBroken method from Item
 
 
-
-void Character::cleanBroken () {
+template<int inventorySlots>
+void Character<inventorySlots>::cleanBroken () {
     this->clearBrokenArmor ();
     this->clearBrokenWeapon ();
     // Clean broken items in inventory // TODO
 };
 
 
-
-
-    void Character::clearAllInventories () {
+template<int inventorySlots>
+void Character<inventorySlots>::clearAllInventories () {
         this->clearArmor();
         this->clearWeapon();
         this->clearInventory();
     };
 
 
-
-void Character::updatePosition (const int& x, const int& y) {
+template<int inventorySlots>
+void Character<inventorySlots>::updatePosition (const int& x, const int& y) {
     this->_xPos = x;
     this->_yPos = y;
 }
 
-
-void Character::updateStatus () {
+template<int inventorySlots>
+void Character<inventorySlots>::updateStatus () {
     if (this->_health <= 0) {
         this->_isAlive = false;
     };

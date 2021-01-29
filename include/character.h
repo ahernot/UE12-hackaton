@@ -15,10 +15,11 @@ class WeaponItem {
 };
 
 
+template<int inventorySlots>
 class Character {
 
     public:
-        Character (const int& _type, const int& x, const int& y, const int& health, const int& inventorySlots);
+        Character (const int& _type, const int& x, const int& y, const int& health);
         // inventorySlots default is 4
         // health default is 99
 
@@ -67,7 +68,6 @@ class Character {
     protected:
 
         bool _isAlive = true; // to define elsewhere rather
-        int _inventorySlots;
 
         // Character type
         int _type;
@@ -86,6 +86,6 @@ class Character {
         WeaponItem* _weapon;
 
         // Inventory
-        std::vector<Item*> _inventory; // array
+        std::array<Item*, inventorySlots> _inventory;
 
 }
