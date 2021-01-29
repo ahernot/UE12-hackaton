@@ -11,7 +11,8 @@
 
 using namespace std;
 
-class Map {
+class Map 
+{
     public:
         Map(string _fileAdress = "assets/lvl1.map"); // the constructor
         void generateItem(); // generate a random item at a random vacant position

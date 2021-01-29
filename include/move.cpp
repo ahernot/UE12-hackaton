@@ -1,4 +1,4 @@
-bool move(*Character Character, *Map Map, int direction)
+void move(*Character Character, *Map Map, int direction)
 {
     intarray<int, 2> coordinates = Character.getCoordinates();
     int pos = (coordinates[1]-1) * Map.lineSize() + coordinates[0];
