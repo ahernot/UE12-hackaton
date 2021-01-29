@@ -1,7 +1,11 @@
 #include <array>
 
 class Item {};
-class ArmorItem {};
+class ArmorItem {
+    public:
+        int getDefensePoints() {return 0;};
+        int getType() {return 0;};//helmet
+};
 class WeaponItem {};
 
 
@@ -13,19 +17,19 @@ class Character {
         // health default is 99
 
         // Stats
-        int getCoordinates (); // return int coordinates []
+        std::array<int, 2> getCoordinates (); // return int coordinates []??
         int getType (); // return character type (0=player)
 
 
         // Armor management
         int getArmorVal (); // get armor protection value
-        ArmorItem replaceArmor (const ArmorItem* newArmor); // outputs the previous armor item
-        ArmorItem getArmorItem (const int& pos);
+        ArmorItem* replaceArmor (ArmorItem* newArmor); // outputs the previous armor item
+        ArmorItem* getArmorItem (const int& pos);
 
         // Weapon management
         int getWeaponVal (); // get weapon damage value
-        WeaponItem replaceWeapon (const WeaponItem* newWeapon); // outputs the previous weapon item
-        WeaponItem getWeaponItem ();
+        WeaponItem* replaceWeapon (const WeaponItem* newWeapon); // outputs the previous weapon item
+        WeaponItem* getWeaponItem ();
 
         // Health management
         int getHealth (); // return character health
@@ -61,12 +65,12 @@ class Character {
         int _health; // value between 0 and 99?
 
         // Armor pieces
-        std::array<ArmorItem, 4> _armor; // vector of size 4
+        std::array<ArmorItem*, 4> _armor; // vector of size 4
 
         // Weapon
         WeaponItem* _weapon;
 
         // Inventory
-        std::array<Item*, _inventorySlots> _inventory;
+        std::array<Item*, this->_inventorySlots> _inventory;
 
 }
