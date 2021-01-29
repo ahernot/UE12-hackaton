@@ -35,8 +35,8 @@ class Character {
 
         // Health management
         int getHealth ();
-        int addHealth (const int& healthToAdd);
-        int removeHealth (const int& healthToRemove);
+        void addHealth (const int& healthToAdd);
+        void removeHealth (const int& healthToRemove);
         void clearHealth ();
 
         // Inventory management
