@@ -1,5 +1,4 @@
-void move(Character* character, Map* map, int direction)
-{
+void move(Character* character, Map* map, int direction) {
     std::array<int, 2> coordinates = character->getCoordinates();
     int pos = (coordinates[1]-1) * map->lineSize + coordinates[0];
     

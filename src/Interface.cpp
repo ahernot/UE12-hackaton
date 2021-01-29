@@ -55,8 +55,8 @@ void Interface::displayInit()
 
 void Interface::drawMap(Map* map)
 {
-    int mapLineSize = map->lineSize;
-    int mapColSize  = map->colSize;
+    int mapLineSize = map->lineSize; // horizontal size
+    int mapColSize  = map->colSize; // vertical size
 
     char* mapToDraw = map->mergeLayout();
 

@@ -12,7 +12,7 @@ Map::Map(string _fileAdress)
     vector<char> mapVector;
     char reading;
     string meta;
-    getline(fileMap, meta); // read the number of character per line (written on the first line before the core data)
+    getline(fileMap, meta); // read the number of characters per line (written on the first line before the core data)
     this->lineSize = stoi(meta); 
     while(fileMap.get(reading))
     {
