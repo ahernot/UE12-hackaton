@@ -1,0 +1,9 @@
+{
+    object: 1,
+    name: "Wood Helmet",
+    description: "Wow nice helmet dude",
+    icon: 'H',
+    type: 0,
+    value: 2,
+    durability: 10
+}
