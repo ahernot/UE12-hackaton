@@ -9,7 +9,7 @@ template<int inventorySlots>
 class Character {
 
     public:
-        Character (const int& _type, const int& x, const int& y, const int& health=DEFAULT_HEALTH, const int& baseAttackVal=BASE_ATTACK_VALUE, const int baseArmorVal=BASE_ARMOR_VALUE);
+        Character (const int& _type, const int& x, const int& y, const int& health=DEFAULT_HEALTH, const int& baseAttackVal=BASE_ATTACK_VALUE, const int baseArmorVal=BASE_ARMOR_VALUE, const int& type=TYPE_MONSTER);
 
         // Stats
         std::array<int, 2> getCoordinates (); // return int coordinates []??
@@ -53,10 +53,12 @@ class Character {
         void updatePosition (const int& x, const int& y); // update character position
         void updateStatus (); // alive or dead
 
+        bool isAlive ();
+
 
     protected:
 
-        bool _isAlive;
+        bool _alive;
 
         // Character type
         int _type;
