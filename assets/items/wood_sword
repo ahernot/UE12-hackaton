@@ -1,0 +1,9 @@
+{
+    object: 2,
+    name: "Wood Sword",
+    description: "Wow nice sword dude",
+    icon: '\U0002694',
+    type: 0,
+    value: 5,
+    durability: 25
+}

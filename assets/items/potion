@@ -1,0 +1,9 @@
+{
+    object: 3,
+    name: "Potion",
+    description: "Wow nice potion dude",
+    icon: '\U0001F9EA',
+    type: 0,
+    value: 20,
+    durability: 1
+}
