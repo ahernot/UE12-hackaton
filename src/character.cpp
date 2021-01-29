@@ -1,5 +1,5 @@
 #include <string>
-#include "character.h"
+#include "Character.h"
 
 Character::Character (const int& type, const int& x, const int& y) _type(type), _xPos(x), _yPos(y) {  
 };
@@ -86,9 +86,15 @@ WeaponItem* Character::getWeaponItem () {
 // Health management
 int Character::getHealth () {
     return this->_health;
-}; // return character health
-int addHealth (const int& healthToAdd);
-int removeHealth (const int& healthToRemove);
+};
+
+int Character::addHealth (const int& healthToAdd) {
+    this->_health += healthToAdd;
+};
+
+int Character::removeHealth (const int& healthToRemove) {
+    this->_health -= healthToRemove;
+};
 
 
 
