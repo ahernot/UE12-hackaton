@@ -1,42 +1,49 @@
 #include "Map.h"
 
-Map::Map(string _fileAdress) 
+Map::Map(string _fileAddress) 
 {
-    ifstream fileMap(_fileAdress); // open the map file 
-
-    if(!fileMap)
-    {
+    // Read map file
+    ifstream fileMap(_fileAddress); // open the map file 
+    if(!fileMap) {
         cout << "Echec de l'ouverture du fichier !" << endl;
     }
 
     vector<char> mapVector;
     char reading;
     string meta;
-    getline(fileMap, meta); // read the number of characters per line (written on the first line before the core data)
-    this->lineSize = stoi(meta); 
-    while(fileMap.get(reading))
-    {
-        mapVector.push_back(reading); // read character by character until the end of the file
+
+    // Read the number of characters per line (written on the first line before the core data)
+    getline(fileMap, meta);
+    this->lineSize = stoi(meta);
+
+    // Read the map, character by character until the end of the file
+    while (fileMap.get(reading)) {
+        mapVector.push_back(reading);
     }
+
+    // Generate map layer
     int mapSize = mapVector.size();
     char* map = new char[mapSize];
+
+    // Generate item layer
     Item** items = new Item*[mapSize]; 
-    for (int i=0; i<mapSize; ++i)
-    {
-        map[i]=mapVector[i];
+    for (int i=0; i<mapSize; ++i) {
+        map[i] = mapVector[i];
     }
+
     this->colSize = mapSize/lineSize;
     this->layerMap = map;
     this->layerItem = items;
 }
 
-void Map::generateItem()
-{
+/**
+ * Generate an item in the item layer of the map
+ */
+void Map::generateItem() {
     int mapSize = (this->lineSize)*(this->colSize);
     srand (time(NULL));
     int pos = rand() % mapSize; 
-    while(this->layerMap[pos]!='.' && this->layerItem[pos]!=nullptr)
-    {
+    while(this->layerMap[pos]!='.' && this->layerItem[pos]!=nullptr) {
         pos = rand() % mapSize; 
     }
 
