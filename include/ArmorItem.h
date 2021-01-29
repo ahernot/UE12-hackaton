@@ -7,6 +7,7 @@ const vector<string> ARMOR_LINKMAP = {"wood_helmet", "wood_chest", "wood_legging
 
 class ArmorItem : public Item {
     public:
+        ArmorItem();
         ArmorItem(int type = 0, int material = 0);
         ~ArmorItem();
         int getDefensePoints();

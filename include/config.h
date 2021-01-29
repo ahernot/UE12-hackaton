@@ -11,4 +11,14 @@
 
 #define INVENTORY_SIZE 4
 
+enum INPUT
+  {
+   LEFT = 'q',
+   RIGHT = 'd',
+   TOP = 'z',
+   BOTTOM = 's',
+   STOP = 'x'
+  };
+
+
 #endif

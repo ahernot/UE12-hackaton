@@ -6,6 +6,8 @@
 // Class constructor
 Character::Character (const int& type, const int& x, const int& y, int health, int baseAttackVal, int baseArmorVal): _type(type), _xPos(x), _yPos(y), _health(health), _baseAttackVal(baseAttackVal), _baseArmorVal(baseArmorVal) { 
     this->_alive = true; 
+    this->_weapon = new WeaponItem(0, 0);
+    this->_armor = {new ArmorItem(0,0), new ArmorItem(), new ArmorItem(), new ArmorItem()};
 };
 
 // Class destructor

@@ -13,20 +13,7 @@ int window_right  = window_left + sizeh;
 const char player         = '@';
 const char upperLowerWall = '_';
 const char leftRightWall  = '|';
-const char floor          = '.';
-
-
-enum INPUT
-  {
-   LEFT = 'q',
-   RIGHT = 'd',
-   TOP = 'z',
-   BOTTOM = 's',
-   STOP = 'x'
-  };
-
-
-
+const char ffloor          = '.';
 
 bool is_direction (char c) {
   return ((c == LEFT) or (c == RIGHT)
@@ -56,7 +43,6 @@ void Interface::displayInit()
     noecho();
     cbreak();
     
-
     for(int i = 0; i<sizev; i++) {
         for(int j = 0; j<sizeh; j++) {
             move(i,j);
@@ -69,8 +55,8 @@ void Interface::displayInit()
 
 void Interface::drawMap(Map* map)
 {
-    int mapLineSize = map->lineSize; // horizontal size
-    int mapColSize  = map->colSize; // vertical size
+    int mapLineSize = map->lineSize;
+    int mapColSize  = map->colSize;
 
     char* mapToDraw = map->mergeLayout();
 
@@ -92,8 +78,8 @@ void Interface::drawStats(Character* player)
     move(sizev-1,0);
 
     std::string health = std::to_string(player->getHealth());
-    /* std::string armor = std::to_string(player->getArmorVal());
-    std::string atk = std::to_string(player->getWeaponVal()); */
+    std::string armor = std::to_string(player->getArmorVal());
+    std::string atk = std::to_string(player->getWeaponVal());
 
     std::string stats;
 

@@ -1,9 +1,9 @@
 {
-    object: 1,
-    name: "Wood Boots",
-    description: "Wow nice boots dude",
-    icon: 'B',
-    type: 3,
-    value: 4,
-    durability: 15
+    "object": 1,
+    "name": "Wood Boots",
+    "description": "Wow nice boots dude",
+    "icon": "B",
+    "type": 3,
+    "value": 4,
+    "durability": 15
 }
