@@ -5,16 +5,14 @@
 #include "HealItem.h"
 #include "WeaponItem.h"
 
-template<int inventorySlots>
+
 class Character {
 
     public:
-        Character (const int& _type, const int& x, const int& y, const int& health=DEFAULT_HEALTH, const int& baseAttackVal=BASE_ATTACK_VALUE, const int baseArmorVal=BASE_ARMOR_VALUE) {
-            this->_isAlive = true;
-        };
+        Character (const int& _type, const int& x, const int& y, const int& health=DEFAULT_HEALTH, const int& baseAttackVal=BASE_ATTACK_VALUE, const int baseArmorVal=BASE_ARMOR_VALUE);
 
         // Stats
-        std::array<int, 2> getCoordinates (); // return int coordinates []??
+        std::array<int, 2> getCoordinates ();
         int getType (); // return character type (0=player)
 
 
@@ -81,6 +79,6 @@ class Character {
         WeaponItem* _weapon;
 
         // Inventory
-        std::array<Item*, inventorySlots> _inventory;
+        std::array<Item*, INVENTORY_SIZE> _inventory;
 
 }
