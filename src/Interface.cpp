@@ -107,7 +107,7 @@ void Interface::refreshInterface(Character* player) {
     // this->drawStats(player);
     this->drawPlayer(player);
 
-    move(sizev, sizeh);
+    /* move(sizev, sizeh); */
     refresh();
 }
 
@@ -117,6 +117,4 @@ void Interface::drawPlayer(Character* player)
 
     move(coords[0], coords[1]);
     addch('@');
-
-    refresh();
 }

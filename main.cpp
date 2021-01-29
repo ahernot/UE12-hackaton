@@ -1,6 +1,7 @@
 #include "Character.h"
 #include "Map.h"
 #include "Interface.h"
+#include "move.cpp"
 
 int main () {
     // Initial positions
@@ -18,10 +19,28 @@ int main () {
     i.displayInit();
     i.drawMap(map);
 
+    char c = '\0';
+    int dir = 0;
     // Main loop
     while(player->isAlive()) {
         // Get map
         // char* mapLine = map->mergeLayout();
+        c = getch();
+        switch(c) {
+            case 'z':
+                dir = 1;
+                break;
+            case 'q':
+                dir = 2;
+                break;
+            case 'd':
+                dir = 3;
+                break;
+            case 's':
+                dir = 0;
+                break;
+        }
+        move(player, map, dir);
 
         // Refresh interface
         i.refreshInterface(player);
