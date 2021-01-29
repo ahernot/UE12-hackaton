@@ -20,7 +20,7 @@ Map::Map(string _fileAdress)
     }
     int mapSize = mapVector.size();
     char* map = new char[mapSize];
-    Item* items = new Item*[mapSize]; 
+    Item** items = new Item*[mapSize]; 
     for (int i=0; i<mapSize; ++i)
     {
         map[i]=mapVector[i];
@@ -65,7 +65,7 @@ char* Map::mergeLayout()
     {
         if(this->layerItem[i] !=nullptr)
         {
-            mergedMap[i]=this->layerItem[i].getIcon();
+            mergedMap[i]=this->layerItem[i]->getIcon();
         }
         else
         {

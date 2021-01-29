@@ -1,33 +1,31 @@
-#include "character.h"
-#include "config.h"
+#include "Character.h"
+#include "Map.h"
+#include "Interface.h"
 
+int main () {
+    // Initial positions
+    int xInit = 2;
+    int yInit = 2;
 
-// Initial positions
-int xInit = 0;
-int yInit = 0;
+    // Initialise player
+    Character* player = new Character(0, xInit, yInit, DEFAULT_HEALTH, BASE_ATTACK_VALUE, BASE_ARMOR_VALUE);
 
+    // Initialise map
+    Map* map = new Map();
 
+    // Initialise interface
+    Interface i;
+    i.displayInit();
+    i.drawMap(map);
 
-// Initialise player
-Character<DEFAULT_INVENTORY_SIZE>* player = new Character<DEFAULT_INVENTORY_SIZE> (0, xInit, yInit, DEFAULT_HEALTH, BASE_ATTACK_VALUE, BASE_ARMOR_VALUE)
+    // Main loop
+    while(player->isAlive()) {
+        // Get map
+        // char* mapLine = map->mergeLayout();
 
-// Initialise map
-Map* map = new Map ();
+        // Refresh interface
+        i.refreshInterface(player);
+    }
 
-// Initialise interface
-Interface interface;
-interface.displayInit();
-interface.drawMap();
-
-
-// Main loop
-while !(player->isAlive()) {
-
-    // Get map
-    // char* mapLine = map->mergeLayout();
-
-    // Refresh interface
-    interface.refresh();
-
-
+    return 0;
 }

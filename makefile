@@ -25,6 +25,6 @@ build:
 	mkdir -p $@
 
 clean: 
-	rm rogue
 	rm librogue.a
 	rm -r build
+	rm rogue

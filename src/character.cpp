@@ -2,8 +2,8 @@
 
 
 // Class constructor
-Character::Character (const int& type, const int& x, const int& y, const int& health, const int& baseAttackVal, const int baseArmorVal): _type(type), _xPos(x), _yPos(y), _health(health), _baseAttackVal(baseAttackVal), _baseArmorVal(baseArmorVal) { 
-    this->_isAlive = true; 
+Character::Character (const int& type, const int& x, const int& y, int health, int baseAttackVal, int baseArmorVal): _type(type), _xPos(x), _yPos(y), _health(health), _baseAttackVal(baseAttackVal), _baseArmorVal(baseArmorVal) { 
+    this->_alive = true; 
 };
 
 // Class destructor
@@ -29,10 +29,13 @@ int Character::getType () {
 // Armor
 
 int Character::getArmorVal () {
-    int armorVal = this->baseArmorVal;
-    for (std::array<ArmorItem*, 4>::iterator armorIterator = this->_armor.begin(); armorIterator < this->_armor.end(); armorIterator ++) {
+    int armorVal = this->_baseArmorVal;
+    /* for (std::array<ArmorItem*, 4>::iterator armorIterator = this->_armor.begin(); armorIterator < this->_armor.end(); armorIterator ++) {
         armorVal += (*armorIterator)->getDefensePoints();
-    };
+    }; */
+    for(int i = 0; i<4; i++) {
+        armorVal += (this->_armor)[i]->getDefensePoints();
+    }
     return armorVal;
 };
 
@@ -253,13 +256,11 @@ void Character::updatePosition (const int& x, const int& y) {
 
 void Character::updateStatus () {
     if (this->_health <= 0) {
-        this->_isAlive = false;
+        this->_alive = false;
     };
 };
 
-
-template<int inventorySlots>
-bool Character<inventorySlots>::isAlive () {
+bool Character::isAlive () {
     return this->_alive;
 };
 

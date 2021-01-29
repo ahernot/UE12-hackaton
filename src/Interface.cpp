@@ -1,4 +1,5 @@
 #include "Interface.h"
+#include <iostream>
 
 
 int sizeh = 125;
@@ -32,12 +33,8 @@ bool is_direction (char c) {
 	  or (c == BOTTOM) or (c == TOP));
 }
 
-
-
-
 Interface::Interface()
 {
-
     int size = sizeh*(sizev);
     char* display = new char [size];
 
@@ -77,44 +74,49 @@ void Interface::drawMap(Map* map)
 
     char* mapToDraw = map->mergeLayout();
 
-    for (int i = 0; i < mapLineSize; ++i)
+    for (int i = 0; i < mapColSize; i++)
     {
-        for (int j = 0; j < mapColSize; ++j)
+        for (int j = 0; j < mapLineSize; j++)
         {
             move(i,j);
-
             addch(mapToDraw[i*mapLineSize+j]);
+            //std::cout << mapToDraw[i*mapColSize+j] << std::endl;
         }
     }
+    refresh();
 }
 
-void Interface::drawStats(Character<DEFAULT_INVENTORY_SIZE>* player)
+void Interface::drawStats(Character* player)
 {
 
-    move(sizev,0);
+    move(sizev-1,0);
 
     std::string health = std::to_string(player->getHealth());
-    std::string armor = std::to_string(player->getArmorVal());
-    std::string atk = std::to_string(player->getWeaponVal());
+    /* std::string armor = std::to_string(player->getArmorVal());
+    std::string atk = std::to_string(player->getWeaponVal()); */
 
     std::string stats;
 
-    stats = " PV = " + health + "    Armor = " + armor + "    ATK = " + atk;
+    stats = " PV = " + health + "    Armor = 20    ATK = 25";
 
     addstr(stats.c_str());
-
 }
  
 
-void Interface::refresh(Character* player) {
-    this->drawStats(player);
+void Interface::refreshInterface(Character* player) {
+    // this->drawStats(player);
+    this->drawPlayer(player);
 
+    move(sizev, sizeh);
+    refresh();
 }
 
 void Interface::drawPlayer(Character* player)
 {
-    array<int, 2> coords = player->getCoordinates();
+    std::array<int, 2> coords = player->getCoordinates();
 
     move(coords[0], coords[1]);
     addch('@');
+
+    refresh();
 }

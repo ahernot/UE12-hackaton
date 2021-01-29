@@ -1,3 +1,6 @@
+#ifndef _INTERFACE_H_
+#define _INTERFACE_H_
+
 #include <iostream>
 #include <string>
 #include <array>
@@ -7,8 +10,6 @@
 #include "Map.h"
 #include "character.h"
 #include "Item.h"
-
-#pragma once
 
 class Interface {
     protected:
@@ -20,5 +21,7 @@ class Interface {
         void drawMap(Map* map);
         void drawStats(Character* player);
         void drawPlayer(Character* player);
-        void refresh();
+        void refreshInterface(Character* player);
 };
+
+#endif

@@ -1,3 +1,6 @@
+#ifndef _CHARACTER_H_
+#define _CHARACTER_H_
+
 #include <array>
 #include <vector>
 #include "config.h"
@@ -9,7 +12,8 @@
 class Character {
 
     public:
-        Character (const int& type, const int& x, const int& y, const int& health=DEFAULT_HEALTH, const int& baseAttackVal=BASE_ATTACK_VALUE, const int baseArmorVal=BASE_ARMOR_VALUE) {};
+        Character (const int& type, const int& x, const int& y, int health=DEFAULT_HEALTH, int baseAttackVal=BASE_ATTACK_VALUE, int baseArmorVal=BASE_ARMOR_VALUE);
+        ~Character();
 
         // Stats
         std::array<int, 2> getCoordinates ();
@@ -37,7 +41,7 @@ class Character {
         void clearHealth ();
 
         // Inventory management
-        std::vector<Item*> getInventory(); // return whole inventory
+        std::array<Item*, INVENTORY_SIZE> getInventory(); // return whole inventory
         Item* getInventory (const int& pos); // return specific item from inventory
         Item* replaceInventory (Item* newItem); // englobe tous les types d'Item ?
         Item* replaceInventory (Item* newItem, const int& pos);
@@ -84,3 +88,5 @@ class Character {
         std::array<Item*, INVENTORY_SIZE> _inventory;
 
 };
+
+#endif
