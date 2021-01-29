@@ -1,5 +1,7 @@
 #include <iostream>
 #include <string>
+#include <array>
+#include <vector>
 #include <ncurses.h>
 #include <iomanip>
 #include "Map.h"
@@ -14,6 +16,8 @@ class Interface {
         Interface();
         ~Interface();
         void displayInit();
-        void drawMap();
-        void drawStats();
+        void drawMap(Map* map);
+        void drawStats(Character* player);
+        void drawPlayer(Character* player);
+        void refresh();
 };
