@@ -88,7 +88,7 @@ void Interface::drawMap(Map* map)
     }
 }
 
-void Interface::drawStats(Character* player)
+void Interface::drawStats(Character<DEFAULT_INVENTORY_SIZE>* player)
 {
 
     move(sizev,0);
@@ -101,7 +101,7 @@ void Interface::drawStats(Character* player)
 
     stats = " PV = " + health + "    Armor = " + armor + "    ATK = " + atk;
 
-    addstr(stats.c_str())
+    addstr(stats.c_str());
 
 }
  

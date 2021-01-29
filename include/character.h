@@ -9,7 +9,7 @@ template<int inventorySlots>
 class Character {
 
     public:
-        Character (const int& _type, const int& x, const int& y, const int& health=DEFAULT_HEALTH, const int& baseAttackVal=BASE_ATTACK_VALUE, const int baseArmorVal=BASE_ARMOR_VALUE, const int& type=TYPE_MONSTER);
+        Character (const int& type, const int& x, const int& y, const int& health=DEFAULT_HEALTH, const int& baseAttackVal=BASE_ATTACK_VALUE, const int baseArmorVal=BASE_ARMOR_VALUE) {};
 
         // Stats
         std::array<int, 2> getCoordinates (); // return int coordinates []??
@@ -83,4 +83,4 @@ class Character {
         // Inventory
         std::array<Item*, inventorySlots> _inventory;
 
-}
+};

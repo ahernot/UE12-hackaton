@@ -4,6 +4,7 @@
 #include <iomanip>
 #include "Map.h"
 #include "character.h"
+#include "Item.h"
 
 #pragma once
 
@@ -14,6 +15,7 @@ class Interface {
         Interface();
         ~Interface();
         void displayInit();
-        void drawMap();
-        void drawStats();
+        void drawMap(Map* map);
+        void drawStats(Character<DEFAULT_INVENTORY_SIZE>* player);
+        void refresh();
 };

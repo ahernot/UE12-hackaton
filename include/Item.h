@@ -2,8 +2,9 @@
 #define _ITEM_H_
 
 #include <iostream>
-#include <array>
+#include <vector>
 #include <fstream>
+#include "json/json.h"
 #include <json/value.h>
 
 using namespace std;
@@ -19,7 +20,7 @@ class Item {
         int _durability;
 
     public:
-        Item(string& item = "generic");
+        Item(string item);
         ~Item();
         virtual void print();
         char getIcon();

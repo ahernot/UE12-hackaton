@@ -7,7 +7,7 @@ int WeaponItem::getAttackPoints() {
 }
 
 bool WeaponItem::isBroken() {
-    return (this->_durability == 0)
+    return (this->_durability == 0);
 }
 
 void WeaponItem::print() {

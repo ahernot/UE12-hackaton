@@ -7,7 +7,9 @@
 #include <stdio.h> // for random
 #include <stdlib.h> // for random
 #include <time.h> // for a random seed
-
+#include "ArmorItem.h"
+#include "WeaponItem.h"
+#include "HealItem.h"
 
 using namespace std;
 

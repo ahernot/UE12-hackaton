@@ -1,6 +1,9 @@
+#ifndef _WEAPON_ITEM_H_
+#define _WEAPON_ITEM_H_
+
 #include "Item.h"
 
-const array<string> WEAPON_LINKMAP = {"wood_sword"};
+const vector<string> WEAPON_LINKMAP = {"wood_sword"};
 
 class WeaponItem : public Item {
     public:
@@ -8,4 +11,7 @@ class WeaponItem : public Item {
         ~WeaponItem();
         int getAttackPoints();
         bool isBroken();
+        void print();
 };
+
+#endif

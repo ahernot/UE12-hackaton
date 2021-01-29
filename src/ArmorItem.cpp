@@ -7,7 +7,7 @@ int ArmorItem::getDefensePoints() {
 }
 
 bool ArmorItem::isBroken() {
-    return (this->_durability == 0)
+    return (this->_durability == 0);
 }
 
 void ArmorItem::print() {

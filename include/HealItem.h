@@ -1,6 +1,9 @@
+#ifndef _HEAL_ITEM_H_
+#define _HEAL_ITEM_H_
+
 #include "Item.h"
 
-const array<string> HEAL_LINKMAP = {"potion"};
+const vector<string> HEAL_LINKMAP = {"potion"};
 
 class HealItem : public Item {
     public:
@@ -9,3 +12,5 @@ class HealItem : public Item {
         int getHealPoints();
         void print();
 };
+
+#endif
