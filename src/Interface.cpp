@@ -86,6 +86,7 @@ void Interface::drawMap(Map* map)
             addch(mapToDraw[i*mapLineSize+j]);
         }
     }
+    refresh();
 }
 
 void Interface::drawStats(Character* player)
@@ -102,6 +103,7 @@ void Interface::drawStats(Character* player)
     stats = " PV = " + health + "    Armor = " + armor + "    ATK = " + atk;
 
     addstr(stats.c_str());
+    refresh();
 
 }
  
@@ -113,6 +115,7 @@ void Interface::clear(Map* map, std::array coords)
 
     move(x,y);
     addch(cToPlace);
+    refresh();
 }
 
 
@@ -123,6 +126,7 @@ void Interface::drawPlayer(Character* player)
 
     move(coords[1], coords[0]);
     addch('@');
+    refresh();
 }
 
 
