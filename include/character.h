@@ -56,6 +56,7 @@ class Character {
         void clearInventory ();
         void clearBrokenInInventory();
 
+        // Clear all items
         void clearAllInventories ();
 
         // Global loop functions
@@ -66,7 +67,7 @@ class Character {
 
     protected:
 
-        bool _isAlive = true; // to define elsewhere rather
+        bool _isAlive;
 
         // Character type
         int _type;
@@ -83,7 +84,7 @@ class Character {
         int _health; // value between 0 and 100
 
         // Armor pieces
-        std::array<ArmorItem*, 4> _armor; // vector of size 4
+        std::array<ArmorItem*, 4> _armor;
 
         // Weapon
         WeaponItem* _weapon;
@@ -92,6 +93,3 @@ class Character {
         std::array<Item*, inventorySlots> _inventory;
 
 }
-
-
-// Regeneration

@@ -3,7 +3,8 @@
 
 // Class constructor
 template<int inventorySlots>
-Character<inventorySlots>::Character (const int& type, const int& x, const int& y, const int& health=10): _type(type), _xPos(x), _yPos(y), _health(health) {  
+Character<inventorySlots>::Character (const int& type, const int& x, const int& y, const int& health=10): _type(type), _xPos(x), _yPos(y), _health(health) { 
+    this->_isAlive = true; 
 };
 
 // Class destructor
@@ -219,14 +220,6 @@ void Character<inventorySlots>::updateStatus () {
 
 
 
-
-
-
-
-
-// #inventory -> calculate minecraft armor, 1 weapon
-// #health
-
-
 // DESTRUCTOR WHEN DEAD
 // SHIELD TO ACTIVATE, IN OFFHAND?
+// Regeneration?
