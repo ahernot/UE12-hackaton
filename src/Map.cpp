@@ -36,6 +36,7 @@ Map::Map(string _fileAddress)
     this->layerItem = items;
 }
 
+
 /**
  * Generate an item in the item layer of the map
  */
@@ -64,49 +65,60 @@ void Map::generateItem() {
     };
 }
 
+
+/**
+ * Merge map layers for display
+ * @return merged map layers
+ */
 char* Map::mergeLayout()
 {
     int mapSize = (this->lineSize)*(this->colSize);
-    char* mergedMap = new char[mapSize];
-    for (int i=0; i<mapSize; ++i)
-    {
-        if(this->layerItem[i] !=nullptr)
-        {
+    char* mergedMap = new char[mapSize]; // initialise merged map
+    
+    for (int i=0; i<mapSize; ++i) {
+        if(this->layerItem[i] !=nullptr) {
             mergedMap[i]=this->layerItem[i]->getIcon();
         }
-        else
-        {
+        else {
             mergedMap[i]=this->layerMap[i];
-        }
-    }
+        };
+    };
+
     return mergedMap;
 }
 
-bool Map::isAccessible(int pos)
-{
-    if(this->layerMap[pos]=='.')
-    {
+
+/**
+ * Get accessibility value of position
+ * @param pos position in map
+ * @return accessibility boolean
+ */
+bool Map::isAccessible(int pos) {
+    if (this->layerMap[pos]=='.') {
         return true;
     }
-    else
-    {
+    else {
         return false;
-    }
-}
+    };
+};
 
+
+/**
+ * Find item in map
+ * @param pos position in map
+ * @return found item
+ */
 Item* Map::foundSomething(int pos)
 {
-    if(this->layerItem[pos] != nullptr)
-    {
+    if (this->layerItem[pos] != nullptr) {
         Item* foundItem = this->layerItem[pos];
         this->layerItem[pos]=nullptr;
         return foundItem;
     }
-    else
-    {
+    else {
         return nullptr;
-    }
-}
+    };
+};
 
 
 
@@ -115,4 +127,5 @@ Item* Map::foundSomething(int pos)
  * Add other item types in item generation
  * Add random ponderation in random item generation
  * Add random item stats in random item generation
+ * Implement item picking up and dropping
  */
