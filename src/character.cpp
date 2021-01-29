@@ -98,6 +98,29 @@ int Character::removeHealth (const int& healthToRemove) {
 
 
 
+// Inventory management
+std::array<Item*, 9> Character::getInventory () { // NO WORKO (SIZE = this->_inventorySlots)
+    return this->_inventory;
+};
+
+Item* Character::getInventory (const int& pos) {
+    return (this->_inventory)[pos];
+};
+
+/**
+ * Default method to add to end of inventory (englobe tous les types d'Item ?)
+ */
+Item* Character::replaceInventory (Item* newItem); {
+    Item* oldItem = (this->_inventory)[8]; // Get last item of inventory
+    (this->_inventory)[8] = newItem;
+
+};
+
+Item* Character::replaceInventory (Item* newItem, const int& pos);
+void Character::removeInInventory (const int& pos); // delete if broken, with isBroken method from Item
+
+
+
 
 
 /*

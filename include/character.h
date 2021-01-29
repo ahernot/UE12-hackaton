@@ -40,10 +40,10 @@ class Character {
         int removeHealth (const int& healthToRemove);
 
         // Inventory management
-        std::vector<Item*> getInventory(); // return whole inventory
-        Item getInventory (const int& pos); // return specific item from inventory
-        Item replaceInventory (const Item* itemToAdd); // englobe tous les types d'Item ?
-        Item replaceInventory (const Item* itemToAdd, const int& pos);
+        std::array<Item*, 9> getInventory(); // return whole inventory // NO WORKO (SIZE = this->_inventorySlots)
+        Item* getInventory (const int& pos); // return specific item from inventory
+        Item* replaceInventory (Item* newItem); // englobe tous les types d'Item ?
+        Item* replaceInventory (Item* newItem, const int& pos);
         void removeInInventory (const int& pos); // delete if broken, with isBroken method from Item
 
         // Global loop functions
@@ -74,6 +74,6 @@ class Character {
         WeaponItem* _weapon;
 
         // Inventory
-        std::array<Item*, this->_inventorySlots> _inventory;
+        std::array<Item*, 9> _inventory; // NO WORKO (SIZE = this->_inventorySlots)
 
 }
