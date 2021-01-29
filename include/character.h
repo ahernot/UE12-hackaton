@@ -1,4 +1,4 @@
-#include <vector>
+#include <array>
 
 class Item {};
 class ArmorItem {};
@@ -12,21 +12,20 @@ class Character {
         // inventorySlots default is 4
         // health default is 99
 
-
-        
-
-        //int[] getCoordinates ();
-        //int getType ();
+        // Stats
+        int getCoordinates (); // return int coordinates []
+        int getType (); // return character type (0=player)
 
 
         // Armor management
         int getArmorVal (); // get armor protection value
         ArmorItem replaceArmor (const ArmorItem* newArmor); // outputs the previous armor item
+        ArmorItem getArmorItem (const int& pos);
 
         // Weapon management
-        int getWeaponVal ();
+        int getWeaponVal (); // get weapon damage value
         WeaponItem replaceWeapon (const WeaponItem* newWeapon); // outputs the previous weapon item
-
+        WeaponItem getWeaponItem ();
 
         // Health management
         int getHealth (); // return character health
@@ -42,12 +41,14 @@ class Character {
 
         // Global loop functions
         void cleanBroken (); // remove broken items in inventory, weapon slot, and armor slots
-        void move (const int& x, const int& y); // move character
+        //void move (const int& x, const int& y); // move character
+        void updatePosition (const int& x, const int& y); // update character position
 
 
     protected:
 
         // bool isDead; ???
+        int _inventorySlots; // remove
 
         // Character type
         int _type;
@@ -60,13 +61,12 @@ class Character {
         int _health; // value between 0 and 99?
 
         // Armor pieces
-        std::vector<ArmorItem> _armor(4); // vector of size 4
+        std::array<ArmorItem, 4> _armor; // vector of size 4
 
         // Weapon
         WeaponItem* _weapon;
 
         // Inventory
-        std::vector<Item*> _inventory; // inventory size?
-
+        std::array<Item*, _inventorySlots> _inventory;
 
 }
