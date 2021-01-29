@@ -3,23 +3,17 @@
 Item::Item(string item) {
     // Read JSON
     ifstream infoItem("assets/items/" + item);
+    json j;
+    infoItem >> j;
 
-    infoItem >> this->_object;
-    infoItem >> this->_name;
-    infoItem >> this->_description;
-    infoItem >> this->_icon;
-    infoItem >> this->_type;
-    infoItem >> this->_value;
-    infoItem >> this->_durability;
-    
-    /* // Init attributes
-    this->_object = infoItem["object"].asInt();
-    this->_name = infoItem["name"].asString();
-    this->_description = infoItem["description"].asString();
-    this->_icon = infoItem["icon"].asInt();
-    this->_type = infoItem["type"].asInt();
-    this->_value = infoItem["value"].asInt();
-    this->_durability = infoItem["durability"].asInt(); */
+    this->_object = j["object"].get<int>();
+    this->_name = j["name"].get<string>();
+    this->_description = j["description"].get<string>();
+    this->_icon = j["icon"].get<char>();
+    this->_type = j["type"].get<int>();
+    this->_value = j["value"].get<int>();
+    this->_durability = j["durability"].get<int>();
+
     infoItem.close();
 }
 

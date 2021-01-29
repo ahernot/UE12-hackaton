@@ -13,7 +13,7 @@ int window_right  = window_left + sizeh;
 const char player         = '@';
 const char upperLowerWall = '_';
 const char leftRightWall  = '|';
-const char floor          = '.';
+const char ffloor          = '.';
 
 
 enum INPUT
