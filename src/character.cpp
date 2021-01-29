@@ -169,12 +169,24 @@ Item* Character<inventorySlots>::getInventory (const int& pos) {
 };
 
 /**
- * Default method to add to end of inventory (englobe tous les types d'Item ?)
+ * Add item to inventory in the first vacant slot, or in the last slot (returning the item it replaces).
  */
 template<int inventorySlots>
 Item* Character<inventorySlots>::replaceInventory (Item* newItem) {
-    return Character::replaceInventory(newItem, 8); // Replace last item of inventory
+    for (int i = 0; i < inventorySlots; i ++) {
+        Item* inventoryItem = (this->_inventory)[i]; // works?
+        if (inventoryItem == nullptr) {
+            (this->_inventory)[i] = newItem;
+            return nullptr;
+        };
+
+        // get old item
+        (this->_inventory)[inventorySlots] = newItem;
+        // return old item
+    };
+    return Character::replaceInventory(newItem, inventorySlots); // Replace last item of inventory
 };
+
 
 template<int inventorySlots>
 Item* Character<inventorySlots>::replaceInventory (Item* newItem, const int& pos) {
@@ -189,8 +201,41 @@ void Character<inventorySlots>::removeInInventory (const int& pos) {
 }; // delete if broken, with isBroken method from Item
 
 
+/**
+ * Clear all player inventory
+ */
 template<int inventorySlots>
-void Character<inventorySlots>::cleanBroken () {
+void Character<inventorySlots>::clearInventory () {
+    for (int i = 0; i < inventorySlots; i ++) {
+        (this->_inventory)[i] = nullptr;
+    };
+}
+
+
+/**
+ * Clear all broken in player inventory
+ */
+template<int inventorySlots>
+void Character<inventorySlots>::clearBrokenInInventory () {
+    for (int i = 0; i < inventorySlots; i ++) {
+        Item* inventoryItem = (this->_inventory)[i]; // works?
+        if (inventoryItem->getDurability() <= 0) {
+            (this->_inventory)[i] = nullptr; // delete pointer (DELETE OBJECT???)
+        };
+    };
+};
+
+
+
+
+
+
+
+
+
+
+template<int inventorySlots>
+void Character<inventorySlots>::clearBroken () {
     this->clearBrokenArmor ();
     this->clearBrokenWeapon ();
     // Clean broken items in inventory // TODO

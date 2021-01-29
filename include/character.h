@@ -9,7 +9,9 @@ template<int inventorySlots>
 class Character {
 
     public:
-        Character (const int& _type, const int& x, const int& y, const int& health=DEFAULT_HEALTH, const int& baseAttackVal=BASE_ATTACK_VALUE, const int baseArmorVal=BASE_ARMOR_VALUE);
+        Character (const int& _type, const int& x, const int& y, const int& health=DEFAULT_HEALTH, const int& baseAttackVal=BASE_ATTACK_VALUE, const int baseArmorVal=BASE_ARMOR_VALUE) {
+            this->_isAlive = true;
+        };
 
         // Stats
         std::array<int, 2> getCoordinates (); // return int coordinates []??
@@ -49,7 +51,7 @@ class Character {
         void clearAllInventories ();
 
         // Global loop functions
-        void cleanBroken (); // remove broken items in inventory, weapon slot, and armor slots
+        void clearBroken (); // remove broken items in inventory, weapon slot, and armor slots
         void updatePosition (const int& x, const int& y); // update character position
         void updateStatus (); // alive or dead
 
