@@ -106,6 +106,15 @@ void Interface::drawStats(Character<DEFAULT_INVENTORY_SIZE>* player)
 }
  
 
-void Interface::refresh() {
-    
+void Interface::refresh(Character* player) {
+    this->drawStats(player);
+
+}
+
+void Interface::drawPlayer(Character* player)
+{
+    array<int, 2> coords = player->getCoordinates();
+
+    move(coords[0], coords[1]);
+    addch('@');
 }
