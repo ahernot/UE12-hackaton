@@ -2,6 +2,8 @@
 #include <string>
 #include <ncurses.h>
 #include <iomanip>
+#include "Map.h"
+#include "character.h"
 
 #pragma once
 
@@ -12,4 +14,6 @@ class Interface {
         Interface();
         ~Interface();
         void displayInit();
+        void drawMap();
+        void drawStats();
 };

@@ -1,5 +1,6 @@
 #include "Interface.h"
 
+
 int sizeh = 125;
 int sizev = 32;
 
@@ -144,4 +145,36 @@ void Interface::displayInit()
     }
     refresh();
     
+}
+
+void Interface::drawMap(Map map)
+{
+    int mapLineSize = map.lineSize;
+    int mapColSize  = map.colSize;
+
+    char* mapToDraw = map.mergeLayout();
+
+    for (int i = 0; i < mapLineSize; ++i)
+    {
+        for (int j = 0; j < mapColSize; ++j)
+        {
+            move(i,j);
+
+            addch(mapToDraw[i*mapLineSize+j]);
+        }
+    }
+}
+
+void Interface::drawStats(Character* player)
+{
+
+    move(32,0);
+
+    int health = std::to_string(player->getHealth()).c_str();
+    int armor = player->getArmorVal();
+    int atk = player->getWeaponVal();
+
+    
+
+
 }
