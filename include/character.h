@@ -4,9 +4,12 @@ class Item {};
 class ArmorItem {
     public:
         int getDefensePoints() {return 0;};
-        int getType() {return 0;};//helmet
+        int getType() {return 0;};
 };
-class WeaponItem {};
+class WeaponItem {
+    public:
+        int getAttackPoints() {return 0;};
+};
 
 
 class Character {
@@ -62,7 +65,7 @@ class Character {
         int _yPos;
 
         // Health
-        int _health; // value between 0 and 99?
+        int _health; // value between 0 and 100
 
         // Armor pieces
         std::array<ArmorItem*, 4> _armor; // vector of size 4

@@ -27,6 +27,11 @@ int Character::getArmorVal () {
     return armorVal;
 };
 
+/**
+ * Replace armor in armor inventory
+ * @param newArmor new armor piece to add
+ * @return old armor piece
+ */
 ArmorItem* Character::replaceArmor (ArmorItem* newArmor) {
     int newArmorType = newArmor->getType(); // get new armor type
     ArmorItem* oldArmor = (this->_armor)[newArmorType]; // Get old armor (with matching type) pointer
@@ -34,10 +39,47 @@ ArmorItem* Character::replaceArmor (ArmorItem* newArmor) {
     return oldArmor; // return old armor pointer
 };
 
-
+/**
+ * Get armor item at specific position
+ * @param pos position
+ * @return pointer to armor item
+ */
 ArmorItem* Character::getArmorItem (const int& pos) {
     return (this->_armor)[pos];
 };
+
+
+
+
+
+
+// Weapons
+/**
+ * Get character attack points.
+ * @return Weapon value
+ */
+int Character::getWeaponVal () {
+    return (this->_weapon)->getAttackPoints();
+}
+
+/**
+ * Replace weapon in weapon slot
+ * @param newWeapon new weapon
+ * @return old weapon
+ */
+WeaponItem* Character::replaceWeapon (const WeaponItem* newWeapon) {
+
+};
+
+/**
+ * Replace weapon in weapon slot
+ * @param newWeapon new weapon
+ * @return old weapon
+ */
+WeaponItem* Character::getWeaponItem () {
+    
+};
+
 
 
 
