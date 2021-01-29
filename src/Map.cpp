@@ -11,18 +11,31 @@ Map::Map(string _fileAdress)
 
     vector<char> mapVector;
     char reading;
+    getline(fileMap, this->lineSize);
     while(fileMap.get(reading))
     {
         mapVector.push_back(reading);
     }
-
-    char* map = new char[mapVector.size()];
-    char* items = new char[mapVector.size()];
-    for (int i=0; i<mapVector.size(); ++i)
+    int mapSize = mapVector.size();
+    char* map = new char[mapSize];
+    Item* items = new Item*[mapSize]; 
+    for (int i=0; i<mapSize; ++i)
     {
         map[i]=mapVector[i];
     }
+    this->colSize = mapSize/lineSize;
+    this->layerMap = map;
+    this->layerItem = items;
+}
 
-    this->_layerMap = map;
-    this->_layerItem = items;
+Map::generateItem()
+{
+    srand (time(NULL));
+
+    int i = rand() % mapSize; 
+    while(map[i]!='.' && items[i]!=nullptr)
+    {
+        i = rand() % mapSize; 
+    }
+    this->layerItem[i] = new Item();
 }
