@@ -40,28 +40,28 @@ Map::Map(string _fileAddress)
  * Generate an item in the item layer of the map
  */
 void Map::generateItem() {
+
     int mapSize = (this->lineSize)*(this->colSize);
+
+    // Generate a random position
     srand (time(NULL));
     int pos = rand() % mapSize; 
     while(this->layerMap[pos]!='.' && this->layerItem[pos]!=nullptr) {
         pos = rand() % mapSize; 
     }
 
+    // Generate a random item
     int alea  = rand() % 3;
-    if(alea==0)
-    {
-        this->layerItem[pos] = new WeaponItem(0,0);
-
+    if (alea==0) {
+        this->layerItem[pos] = new WeaponItem(0,0); // Generate a weapon
     }
-    if(alea==1)
-    {
+    else if (alea==1) {
         int armor = rand() % 4; 
-        this->layerItem[pos] = new ArmorItem(armor,0);
+        this->layerItem[pos] = new ArmorItem(armor,0); // Generate an armor piece
     }
-    if(alea==2)
-    {
-        this->layerItem[pos] = new HealItem(0);
-    }
+    else if (alea==2) {
+        this->layerItem[pos] = new HealItem(0); // Generate a healing item
+    };
 }
 
 char* Map::mergeLayout()
@@ -107,3 +107,12 @@ Item* Map::foundSomething(int pos)
         return nullptr;
     }
 }
+
+
+
+/**
+ * TODO:
+ * Add other item types in item generation
+ * Add random ponderation in random item generation
+ * Add random item stats in random item generation
+ */

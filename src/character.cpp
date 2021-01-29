@@ -328,7 +328,7 @@ bool Character::isAlive () {
 
 
 /**
-* TO DO
+* TODO:
 * class destructor to call when dead
 * shield slot (offhand) with activation hotkey for damage reduction
 * natural health regeneration?
