@@ -1,5 +1,6 @@
 #include <array>
 #include <vector>
+#include "config.h"
 
 class Item {};
 class ArmorItem {
@@ -19,9 +20,7 @@ template<int inventorySlots>
 class Character {
 
     public:
-        Character (const int& _type, const int& x, const int& y, const int& health);
-        // inventorySlots default is 4
-        // health default is 99
+        Character (const int& _type, const int& x, const int& y, const int& health=DEFAULT_HEALTH, const int& baseAttackVal=BASE_ATTACK_VALUE, const int baseArmorVal=BASE_ARMOR_VALUE);
 
         // Stats
         std::array<int, 2> getCoordinates (); // return int coordinates []??
@@ -76,6 +75,10 @@ class Character {
         int _xPos;
         int _yPos;
 
+        // Base stats
+        int _baseAttackVal;
+        int _baseArmorVal;
+
         // Health
         int _health; // value between 0 and 100
 
@@ -89,3 +92,6 @@ class Character {
         std::array<Item*, inventorySlots> _inventory;
 
 }
+
+
+// Regeneration

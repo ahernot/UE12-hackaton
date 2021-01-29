@@ -1,9 +1,12 @@
 #include "Character.h"
 
+
+// Class constructor
 template<int inventorySlots>
-Character<inventorySlots>::Character (const int& type, const int& x, const int& y, const int& health, const int& inventorySlots): _type(type), _xPos(x), _yPos(y), _health(health), _inventorySlots(inventorySlots) {  
+Character<inventorySlots>::Character (const int& type, const int& x, const int& y, const int& health=10): _type(type), _xPos(x), _yPos(y), _health(health) {  
 };
 
+// Class destructor
 Character<inventorySlots>::~Character () {
     // destroy
 };
@@ -27,7 +30,7 @@ int Character<inventorySlots>::getType () {
 // Armor
 template<int inventorySlots>
 int Character<inventorySlots>::getArmorVal () {
-    int armorVal = 0;
+    int armorVal = this->baseArmorVal;
     for (std::array<ArmorItem*, 4>::iterator armorIterator = this->_armor.begin(); armorIterator < this->_armor.end(); armorIterator ++) {
         armorVal += (*armorIterator)->getDefensePoints();
     };
@@ -84,7 +87,9 @@ void Character<inventorySlots>::clearBrokenArmor () {
  */
 template<int inventorySlots>
 int Character<inventorySlots>::getWeaponVal () {
-    return (this->_weapon)->getAttackPoints();
+    int attackVal = this->_baseAttackVal;
+    attackVal += (this->_weapon)->getAttackPoints();
+    return attackVal;
 }
 
 /**
