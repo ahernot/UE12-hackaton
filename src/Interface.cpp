@@ -37,8 +37,6 @@ bool is_direction (char c) {
 Interface::Interface()
 {
 
-
-
     int size = sizeh*(sizev);
     char* display = new char [size];
 
@@ -47,8 +45,10 @@ Interface::Interface()
     {
         display[i] = ' ';
     }
-    int line = 0;
-    int row = 0;
+
+
+    // int line = 0;
+    // int row = 0;
 
     // for (int i = 0; i < size - sizeh ; ++i) 
     // {
@@ -120,7 +120,7 @@ Interface::Interface()
     //     display[i] = ' ';
     // }
 
-    display[size-1] = '\0';
+  
 
     
     this->_display = display;
@@ -134,15 +134,13 @@ void Interface::displayInit()
     clear();
     noecho();
     cbreak();
-    keypad(stdscr, TRUE);
+    
 
     for(int i = 0; i<sizev; i++) {
-        move(i, 0);
-        char st [sizeh];
         for(int j = 0; j<sizeh; j++) {
-            st[j] = this->_display[j+i*sizeh];
+            move(i,j);
+            addch(this->_display[j+i*sizeh]);
         }
-        addstr(st);
     }
     refresh();
     
