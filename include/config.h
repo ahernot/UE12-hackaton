@@ -4,3 +4,6 @@
 #define DEFAULT_HEALTH 100
 
 #define DEFAULT_INVENTORY_SIZE 4
+
+#define TYPE_PLAYER 0
+#define TYPE_MONSTER 1

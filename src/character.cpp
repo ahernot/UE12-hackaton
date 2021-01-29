@@ -3,7 +3,7 @@
 
 // Class constructor
 template<int inventorySlots>
-Character<inventorySlots>::Character (const int& type, const int& x, const int& y, const int& health=10): _type(type), _xPos(x), _yPos(y), _health(health) { 
+Character<inventorySlots>::Character (const int& type, const int& x, const int& y, const int& health, const int& baseAttackVal, const int baseArmorVal): _type(type), _xPos(x), _yPos(y), _health(health), _baseAttackVal(baseAttackVal), _baseArmorVal(baseArmorVal) { 
     this->_isAlive = true; 
 };
 
@@ -216,6 +216,12 @@ void Character<inventorySlots>::updateStatus () {
     if (this->_health <= 0) {
         this->_isAlive = false;
     };
+};
+
+
+template<int inventorySlots>
+bool Character<inventorySlots>::isAlive () {
+    return this->_alive;
 };
 
 
