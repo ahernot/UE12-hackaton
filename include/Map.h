@@ -30,7 +30,6 @@ class Map {
     protected:
         string _fileAdress; // address of the map file, given to the constructor
 
-
 };
 
 #endif
