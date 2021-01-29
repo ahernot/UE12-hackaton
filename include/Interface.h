@@ -10,6 +10,7 @@
 #include "Map.h"
 #include "character.h"
 #include "Item.h"
+#include "config.h"
 
 class Interface {
     protected:

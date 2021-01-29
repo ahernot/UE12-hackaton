@@ -1,5 +1,7 @@
 #include "ArmorItem.h"
 
+ArmorItem::ArmorItem() : Item("empty") {}
+
 ArmorItem::ArmorItem(int type, int material) : Item(ARMOR_LINKMAP[type + material*4]) {}
 
 int ArmorItem::getDefensePoints() {

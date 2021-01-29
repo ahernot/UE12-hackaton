@@ -1,9 +1,9 @@
 {
-    object: 1,
-    name: "Wood Leggings",
-    description: "Wow nice leggings dude",
-    type: 2,
-    icon: 'L',
-    value: 6,
-    durability: 15
+    "object": 1,
+    "name": "Wood Leggings",
+    "description": "Wow nice leggings dude",
+    "type": 2,
+    "icon": "L",
+    "value": 6,
+    "durability": 15
 }

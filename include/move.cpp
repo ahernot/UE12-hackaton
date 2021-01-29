@@ -20,21 +20,21 @@ void move(Character* character, Map* map, int direction)
         pos = pos + 1;
     }
 
-    /* if(map->isAccessible(pos) && pos > -1 && pos < map->lineSize*map->colSize)
-        { */
-            coordinates[0] = pos % map->lineSize;
-            coordinates[1] = pos / map->lineSize;
+    if(map->isAccessible(pos) && pos > -1 && pos < map->lineSize*map->colSize)
+    { 
+        coordinates[0] = pos % map->lineSize;
+        coordinates[1] = pos / map->lineSize;
 
-            /* Item* item = map->foundSomething(pos);
+        Item* item = map->foundSomething(pos);
+        if(item != nullptr)
+        {
+            Item* replace = character->replaceInventory(item);
             if(item != nullptr)
             {
-                Item* replace = character->replaceInventory(item);
-                if(item != nullptr)
-                {
-                    delete replace;
-                }
-            } */
+                delete replace;
+            }
+        }
+    }
        
-
     character->updatePosition(coordinates[0], coordinates[1]);
 }

@@ -15,19 +15,6 @@ const char upperLowerWall = '_';
 const char leftRightWall  = '|';
 const char ffloor          = '.';
 
-
-enum INPUT
-  {
-   LEFT = 'q',
-   RIGHT = 'd',
-   TOP = 'z',
-   BOTTOM = 's',
-   STOP = 'x'
-  };
-
-
-
-
 bool is_direction (char c) {
   return ((c == LEFT) or (c == RIGHT)
 	  or (c == BOTTOM) or (c == TOP));
@@ -56,7 +43,6 @@ void Interface::displayInit()
     noecho();
     cbreak();
     
-
     for(int i = 0; i<sizev; i++) {
         for(int j = 0; j<sizeh; j++) {
             move(i,j);
@@ -92,8 +78,8 @@ void Interface::drawStats(Character* player)
     move(sizev-1,0);
 
     std::string health = std::to_string(player->getHealth());
-    /* std::string armor = std::to_string(player->getArmorVal());
-    std::string atk = std::to_string(player->getWeaponVal()); */
+    std::string armor = std::to_string(player->getArmorVal());
+    std::string atk = std::to_string(player->getWeaponVal());
 
     std::string stats;
 

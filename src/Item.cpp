@@ -9,13 +9,15 @@ Item::Item(string item) {
     this->_object = j["object"].get<int>();
     this->_name = j["name"].get<string>();
     this->_description = j["description"].get<string>();
-    this->_icon = j["icon"].get<char>();
+    this->_icon = j["icon"].get<string>()[0];
     this->_type = j["type"].get<int>();
     this->_value = j["value"].get<int>();
     this->_durability = j["durability"].get<int>();
 
     infoItem.close();
 }
+
+Item::~Item() {}
 
 void Item::print() {
     cout << this->_name << endl;
