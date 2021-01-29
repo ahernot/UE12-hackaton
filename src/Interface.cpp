@@ -105,3 +105,7 @@ void Interface::drawStats(Character* player)
 
 }
  
+
+void Interface::refresh() {
+    
+}
