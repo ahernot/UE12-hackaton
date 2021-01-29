@@ -6,6 +6,6 @@ class WeaponItem : public Item {
     public:
         WeaponItem(int type = 0, int material = 0);
         ~WeaponItem();
-        int getArmorPoints();
+        int getAttackPoints();
         bool isBroken();
 };

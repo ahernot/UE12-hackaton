@@ -1,20 +1,9 @@
 #include <array>
 #include <vector>
 #include "config.h"
-
-class Item {};
-class ArmorItem {
-    public:
-        int getDefensePoints () {return 0;};
-        int getType () {return 0;};
-        int getDurability () {return 10;};
-};
-class WeaponItem {
-    public:
-        int getAttackPoints () {return 0;};
-        int getDurability () {return 10;};
-};
-
+#include "ArmorItem.h"
+#include "HealItem.h"
+#include "WeaponItem.h"
 
 template<int inventorySlots>
 class Character {

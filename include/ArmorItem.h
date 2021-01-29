@@ -6,6 +6,6 @@ class ArmorItem : public Item {
     public:
         ArmorItem(int type = 0, int material = 0);
         ~ArmorItem();
-        int getArmorPoints();
+        int getDefensePoints();
         bool isBroken();
 };

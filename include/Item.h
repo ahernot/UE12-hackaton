@@ -1,3 +1,6 @@
+#ifndef _ITEM_H_
+#define _ITEM_H_
+
 #include <iostream>
 #include <array>
 #include <fstream>
@@ -20,4 +23,8 @@ class Item {
         ~Item();
         virtual void print();
         char getIcon();
+        int getType();
+        int getDurability();
 };
+
+#endif

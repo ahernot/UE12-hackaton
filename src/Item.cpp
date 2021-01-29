@@ -24,3 +24,11 @@ void Item::print() {
 char Item::getIcon() {
     return this->_icon;
 }
+
+int Item::getType() {
+    return this->_type;
+}
+
+int Item::getDurability() {
+    return this->_durability;
+}

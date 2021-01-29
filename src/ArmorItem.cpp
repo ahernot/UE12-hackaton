@@ -2,7 +2,7 @@
 
 ArmorItem::ArmorItem(int type, int material) : Item(ARMOR_LINKMAP[type + material*4]) {}
 
-int ArmorItem::getArmorPoints() {
+int ArmorItem::getDefensePoints() {
     return this->_value;
 }
 
