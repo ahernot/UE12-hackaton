@@ -2,7 +2,7 @@
 
 Map::Map(string _fileAdress) 
 {
-    ifstream fileMap(_fileAdress); 
+    ifstream fileMap(_fileAdress); // open the map file 
 
     if(!fileMap)
     {
@@ -12,11 +12,11 @@ Map::Map(string _fileAdress)
     vector<char> mapVector;
     char reading;
     string meta;
-    getline(fileMap, meta);
+    getline(fileMap, meta); // read the number of character per line (written on the first line before the core data)
     this->lineSize = stoi(meta); 
     while(fileMap.get(reading))
     {
-        mapVector.push_back(reading);
+        mapVector.push_back(reading); // read character by character until the end of the file
     }
     int mapSize = mapVector.size();
     char* map = new char[mapSize];
