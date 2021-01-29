@@ -1,7 +1,7 @@
 #include "Interface.h"
 
 int sizeh = 125;
-int sizev = 32;
+int sizev = 12;
 
 int window_left   = 1;
 int window_top    = 2;
@@ -39,16 +39,16 @@ Interface::Interface()
 
 
 
-    int size = sizeh*(sizev);
+    int size = sizeh*sizev;
     char* display = new char [size];
 
 
-    for (int i = 0; i < size; ++i) 
+    for (int i = 0; i < size; i++) 
     {
-        display[i] = ' ';
+        display[i] = 'O';
     }
-    int line = 0;
-    int row = 0;
+    /* int line = 0;
+    int row = 0; */
 
     // for (int i = 0; i < size - sizeh ; ++i) 
     // {
@@ -120,7 +120,7 @@ Interface::Interface()
     //     display[i] = ' ';
     // }
 
-    display[size-1] = '\0';
+    /* display[size-1] = '\0'; */
 
     
     this->_display = display;
@@ -144,6 +144,6 @@ void Interface::displayInit()
         }
         addstr(st);
     }
+
     refresh();
-    
 }

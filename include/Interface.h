@@ -2,6 +2,7 @@
 #include <string>
 #include <ncurses.h>
 #include <iomanip>
+#include "Move.cpp"
 
 #pragma once
 
