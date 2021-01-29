@@ -31,7 +31,7 @@ class Character {
 
         // Weapon management
         int getWeaponVal (); // get weapon damage value
-        WeaponItem* replaceWeapon (const WeaponItem* newWeapon); // outputs the previous weapon item
+        WeaponItem* replaceWeapon (WeaponItem* newWeapon); // outputs the previous weapon item
         WeaponItem* getWeaponItem ();
 
         // Health management

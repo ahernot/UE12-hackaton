@@ -67,19 +67,28 @@ int Character::getWeaponVal () {
  * @param newWeapon new weapon
  * @return old weapon
  */
-WeaponItem* Character::replaceWeapon (const WeaponItem* newWeapon) {
-
+WeaponItem* Character::replaceWeapon (WeaponItem* newWeapon) {
+    WeaponItem* oldWeapon = (this->_weapon);
+    this->_weapon = newWeapon;
+    return oldWeapon;
 };
 
 /**
- * Replace weapon in weapon slot
- * @param newWeapon new weapon
- * @return old weapon
+ * Get weapon item
+ * @return pointer to weapon item
  */
 WeaponItem* Character::getWeaponItem () {
-    
+    return this->_weapon;
 };
 
+
+
+// Health management
+int Character::getHealth () {
+    return this->_health;
+}; // return character health
+int addHealth (const int& healthToAdd);
+int removeHealth (const int& healthToRemove);
 
 
 
@@ -103,3 +112,4 @@ void Character::updatePosition (const int& x, const int& y) {
 
 
 // DESTRUCTOR WHEN DEAD
+// SHIELD TO ACTIVATE, IN OFFHAND?
