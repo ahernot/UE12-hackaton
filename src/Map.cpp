@@ -11,7 +11,9 @@ Map::Map(string _fileAdress)
 
     vector<char> mapVector;
     char reading;
-    getline(fileMap, this->lineSize);
+    string meta;
+    getline(fileMap, meta);
+    this->lineSize = stoi(meta); 
     while(fileMap.get(reading))
     {
         mapVector.push_back(reading);
@@ -28,14 +30,47 @@ Map::Map(string _fileAdress)
     this->layerItem = items;
 }
 
-Map::generateItem()
+void Map::generateItem()
 {
+    int mapSize = (this->lineSize)*(this->colSize);
     srand (time(NULL));
-
-    int i = rand() % mapSize; 
-    while(map[i]!='.' && items[i]!=nullptr)
+    int pos = rand() % mapSize; 
+    while(this->layerMap[pos]!='.' && this->layerItem[pos]!=nullptr)
     {
-        i = rand() % mapSize; 
+        pos = rand() % mapSize; 
     }
-    this->layerItem[i] = new Item();
+
+    int alea  = rand() % 3;
+    if(alea==0)
+    {
+        this->layerItem[pos] = new WeaponItem(0,0);
+
+    }
+    if(alea==1)
+    {
+        int armor = rand() % 4; 
+        this->layerItem[pos] = new ArmorItem(armor,0);
+    }
+    if(alea==2)
+    {
+        this->layerItem[pos] = new HealItem(0);
+    }
+}
+
+char* Map::mergeLayout()
+{
+    int mapSize = (this->lineSize)*(this->colSize);
+    char* mergedMap = new char[mapSize];
+    for (int i=0; i<mapSize; ++i)
+    {
+        if(this->layerItem[i] !=nullptr)
+        {
+            mergedMap[i]=this->layerItem[i].getIcon();
+        }
+        else
+        {
+            mergedMap[i]=this->layerMap[i];
+        }
+    }
+    return mergedMap;
 }

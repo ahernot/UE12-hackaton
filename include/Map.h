@@ -15,8 +15,9 @@ class Map {
     public:
         Map(string _fileAdress = "assets/lvl1.map");
         void generateItem();
+        char* mergeLayout();
         char* layerMap;
-        char* layerItem;
+        Item* layerItem;
         int lineSize;
         int colSize;
     protected:
