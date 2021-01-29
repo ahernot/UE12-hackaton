@@ -16,6 +16,8 @@ class Map {
         Map(string _fileAdress = "assets/lvl1.map");
         void generateItem();
         char* mergeLayout();
+        bool isAccessible(int pos);
+        Item* foundSomething(int pos);
         char* layerMap;
         Item* layerItem;
         int lineSize;
