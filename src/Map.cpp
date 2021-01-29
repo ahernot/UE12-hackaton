@@ -35,7 +35,7 @@ void Map::generateItem()
     int mapSize = (this->lineSize)*(this->colSize);
     srand (time(NULL));
     int pos = rand() % mapSize; 
-    while(this->layerMap[pos]!='.' && this->layerItem[pos]!=nullptr)
+    while(this->layerMap[pos]!='.' && this->layerItem[pos]!=nullptr) // TAKE CARE, COULD BE INFINITE LOOP !
     {
         pos = rand() % mapSize; 
     }
