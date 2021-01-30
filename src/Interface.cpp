@@ -66,7 +66,6 @@ void Interface::drawMap(Map* map)
         {
             move(i,j);
             addch(mapToDraw[i*mapLineSize+j]);
-            //std::cout << mapToDraw[i*mapColSize+j] << std::endl;
         }
     }
     refresh();
@@ -83,17 +82,17 @@ void Interface::drawStats(Character* player)
 
     std::string stats;
 
-    stats = " PV = " + health + "    Armor = 20    ATK = 25";
+    stats = " PV = " + health + "    Armor = " + armor + "   ATK = " + atk;
 
     addstr(stats.c_str());
 }
  
 
 void Interface::refreshInterface(Character* player) {
-    // this->drawStats(player);
+    this->drawStats(player);
     this->drawPlayer(player);
 
-    /* move(sizev, sizeh); */
+    move(sizev, sizeh);
     refresh();
 }
 
