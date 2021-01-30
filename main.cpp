@@ -1,4 +1,4 @@
-#include "Character.h"
+#include "character.h"
 #include "Map.h"
 #include "Interface.h"
 #include "move.cpp"
