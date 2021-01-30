@@ -1,5 +1,6 @@
 CXX=g++
-CXXFLAGS=-Wall -ggdb -I include
+#CXXFLAGS=-Wall -ggdb -I include
+CXXFLAGS=-std=c++11 -Wall -ggdb -I include
 AR=/usr/bin/ar -r 
 
 src := $(wildcard src/*.cpp) # Génère la liste des fichier .cpp contenu dans le dossier src
