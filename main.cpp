@@ -55,5 +55,9 @@ int main () {
         i.refreshInterface(player);
     }
 
+    // Clean objects
+    delete player;
+    delete map;
+
     return 0;
 }
