@@ -1,5 +1,9 @@
+*
+!/**/
+!*.*
+.DS_Store
 .vscode
-/build/*.o
-librogue.a
-rogue
-rogue.dSYM/
+.idea
+rogue.dSYM/*
+build/*
+*.a
