@@ -62,7 +62,7 @@ void Map::generateItem() {
     }
     else if (alea==2) {
         this->layerItem[pos] = new HealItem(0); // Generate a healing item
-    };
+    }
 }
 
 
@@ -81,8 +81,8 @@ char* Map::mergeLayout()
         }
         else {
             mergedMap[i]=this->layerMap[i];
-        };
-    };
+        }
+    }
 
     return mergedMap;
 }
@@ -99,8 +99,8 @@ bool Map::isAccessible(int pos) {
     }
     else {
         return false;
-    };
-};
+    }
+}
 
 
 /**
@@ -117,8 +117,8 @@ Item* Map::foundSomething(int pos)
     }
     else {
         return nullptr;
-    };
-};
+    }
+}
 
 
 
